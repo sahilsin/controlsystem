@@ -2,6 +2,11 @@
 \numberwithin{equation}{enumi}
 
 \item We are given with a feedback voltage amplifier shown in \ref{fig:Voltage feedback amplifier}.We can neglect $r_{o}$ and given with $R_{1}+R_{2}>>R_{D}$.\\
+(a)Find expressions for G and H hence amount of feedback.\\
+(b)Noting that the feedback can be eliminated by removing $R_{1}$ and $R_{2}$ and connecting the gate of Q to a constant dc voltage (signal ground) give the input resistance $R_{i}$ and output resistance $R_{o}$ of the open-amplifier.\\
+(c)Using standard circuit analysis (i.e =, without invoking the feedback approach), find the input resistance $R_{if}$ and the output resistance $R_{of}$ .How does $R_{if}$ relate to $R_{i}$ and $R_{of}$ relates to $R_{o}$ ?\\
+
+
 \begin{figure}[h!]
 	\begin{center}
 		\resizebox{\columnwidth/1}{!}{\input{./figs/es17btech11019/Voltage_feedback_amplifier.tex}}
@@ -198,5 +203,55 @@ The table showing all the expressions we find out in this problem :
 \label{table}
 \end{table}
 
+\item Now for spice stimulation we will assume some values which are not given and see the spice simulation.\\
+\solution\\
+
+For verifying $G$ (The open loop Gain) we simulate the circuit and plot the ratio: $\cfrac{V_{o}}{V_{s}}$
+
+Finding $g_{m}$ to be $0.09$\\
+\begin{align}
+G = g_{m}R_{D}\\
+G = 0.93645
+\end{align}
+
+For verifying $H$ (The open loop Gain) we simulate the circuit and plot the ratio: $\cfrac{V_{f}}{V_{o}}$
+
+As in circuit we have taken values of $R_{1}$ and $R_{2}$ to be $10k\ohm$ and $10k\ohm$\\
+\begin{align}
+H = \cfrac{R_{1}}{R_{1}+R_{2}}\\
+H = 0.5
+\end{align}
+
+%--------------------------------------------------------%
+
+\item Simulate the circuit \ref{fig:Voltage feedback amplifier} using spice simulators and plot the generated output of the gains using python script
+\\
+\solution The plot for Open loop gain($G$) is :
+
+\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{./figs/es17btech11019/Gain}
+\caption{}
+\label{fig:ep18btech11016_feed_gain}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+    \includegraphics[width=\columnwidth]{./figs/es17btech11019/feedbackfactor}
+\caption{}
+\label{feedback factor}
+\end{figure}
+\renewcommand{\thefigure}{\theenumi}
+
+Find the netlist of the simulated circuit here:
+\begin{lstlisting}
+    codes/es17btech11019/spice/es17btech11019.net
+\end{lstlisting}
+
+Python code used for generating the output:
+\begin{lstlisting}
+    codes/es17betch11019/spice/es17btech11019.py
+\end{lstlisting}
 
 \end{enumerate}
